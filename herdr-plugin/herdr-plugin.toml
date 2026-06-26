@@ -1,0 +1,30 @@
+id = "fnd.agent-tts"
+name = "Agent TTS"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "Speak agent responses aloud when they finish, via Deepgram Aura-2."
+platforms = ["macos"]
+
+[[actions]]
+id = "toggle"
+title = "Toggle TTS"
+command = ["bun", "toggle.ts"]
+
+[[actions]]
+id = "enable"
+title = "Enable TTS"
+command = ["bun", "toggle.ts", "on"]
+
+[[actions]]
+id = "disable"
+title = "Disable TTS"
+command = ["bun", "toggle.ts", "off"]
+
+[[actions]]
+id = "speak"
+title = "Speak last response now"
+command = ["bun", "notify.ts", "--force"]
+
+[[events]]
+on = "pane.agent_status_changed"
+command = ["bun", "notify.ts"]
